@@ -2,8 +2,6 @@
 #include <string>
 #include <fstream>
 
-#define MAXFILELEN 1000
-
 int captcha_sum(int *sequence, int length){
   /*
   calculates sum of all digits that match the next digit in the sequence.
@@ -26,29 +24,25 @@ int captcha_sum(int *sequence, int length){
 
 int main(){
   std::ifstream readfile;
-  std::string input;
-  int testarray[8] = {9, 1, 2, 1, 2, 1, 2, 9};
+  std::string filetext;
+  std::string stringnumber;
   int* numarray = NULL; // initialise pointer to int, initialise to NULL pointer
-  int length = 8; // get length of array
-  char filetext[MAXFILELEN];
+  int length = 0; // initialise length of array to 0
   
   readfile.open("input.txt"); // open input file
   if (readfile.is_open()){
-    while (!readfile.eof()){
-      readfile >> filetext;
-      std::cout << filetext << "\n";
-    }
+    getline(readfile, filetext);
+    //    std::cout << filetext << "\n";
   }
   readfile.close();
+  length = filetext.length();
   numarray = new int[length]; // allocate memory to store n ints
   for (int i = 0; i < length; i++){
-    numarray[i] = testarray[i]; // initialise all elements of array
+    stringnumber = filetext.at(i); // get character (as a length 1 string) at position i
+    numarray[i] = atoi(stringnumber.c_str()); // convert length 1 string to char and convert char to int and store in array
   }
   int result = 0;
-  
-  input = "test";
-  std::cout << input << "\n";
-  
+    
   result = captcha_sum(numarray, length);
   std::cout << result << "\n";
 
