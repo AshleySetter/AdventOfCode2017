@@ -81,4 +81,6 @@ def part1():
     return captcha_result
 
 if __name__ == "__main__":
-    print(part1())
+    for i in range(1000):
+        result = part1()
+    print(result)

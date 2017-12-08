@@ -22,7 +22,7 @@ int captcha_sum(int *sequence, int length){
   return summation;
 }
 
-int main(){
+int part1(){
   std::ifstream readfile;
   std::string filetext;
   std::string stringnumber;
@@ -44,10 +44,18 @@ int main(){
   int result = 0;
     
   result = captcha_sum(numarray, length);
-  std::cout << result << "\n";
+  //  std::cout << result << "\n";
 
   delete [] numarray; // frees memory
   numarray = NULL; // set numarray to NULL pointer again to avoid invalid memory access
-  
+  return result;
+}
+
+int main(){
+  int i, result;
+  for (i = 0; i<1000; i++){
+    result = part1();
+  }
+  std::cout << result << "\n";
   return 0;
 }
