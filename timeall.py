@@ -1,6 +1,6 @@
 import subprocess
 
-subprocess.call(["./timeruns.sh &> output.txt"], shell=True)
+subprocess.call(["./timefiles.sh &> output.txt"], shell=True)
 
 day = 1
 part = 1
