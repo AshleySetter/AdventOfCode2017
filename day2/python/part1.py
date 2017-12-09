@@ -25,7 +25,7 @@ def string_to_list(string):
 
     """
     numlist = []
-    for num in string.split(' '):
+    for num in string.split('\t'):
         numlist.append(int(num))
     return numlist
 
